@@ -1,0 +1,47 @@
+plugins {
+	id 'org.springframework.boot' version '2.1.7.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+	id 'java'
+}
+
+group = 'com.codeworxs.resume'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+	developmentOnly
+	runtimeClasspath {
+		extendsFrom developmentOnly
+	}
+}
+
+repositories {
+	mavenCentral()
+	maven { url 'https://repo.spring.io/milestone' }
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.security.oauth:spring-security-oauth2:2.3.6.RELEASE'
+	implementation 'org.springframework.security:spring-security-oauth2-client'
+	implementation 'commons-io:commons-io:2.6'
+	implementation 'io.jsonwebtoken:jjwt:0.9.1'
+	implementation 'org.apache.commons:commons-lang3:3.8.1'
+	implementation 'commons-beanutils:commons-beanutils:1.9.3'
+	implementation 'com.auth0:jwks-rsa:0.3.0'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	runtimeOnly 'mysql:mysql-connector-java'
+	compileOnly 'org.projectlombok:lombok'
+	runtimeOnly 'org.springframework.boot:spring-boot-devtools'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+}
+
+test {
+	useJUnitPlatform()
+}
