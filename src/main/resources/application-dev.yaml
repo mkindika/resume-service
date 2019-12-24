@@ -2,9 +2,9 @@ server:
     port: 8091
 spring:
     datasource:
-        url: jdbc:mysql://localhost:3306/resumelk?useSSL=false
-        username: indika
-        password: "w0lfman#77D"
+        url: jdbc:mysql://resumedb:3306/resumelk?useSSL=false
+        username: devadmin
+        password: "w0lfman"
     jpa:
         show-sql: true
         hibernate:

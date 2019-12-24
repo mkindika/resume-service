@@ -37,7 +37,7 @@ repositories {
 	jcenter()
 }
 
-project.ext."webApplicationBinaryName" = "resume-server.war"
+project.ext."webApplicationBinaryName" = "resume-service.war"
 
 apply from: "https://dl.bintray.com/scalding/generic/waroverlay.gradle"
 apply from: rootProject.file("gradle/tasks.gradle")
@@ -96,7 +96,7 @@ bootWar {
             logger.info "WAR artifact is not marked as an executable"
         }
         archiveName "${webApplicationBinaryName}"
-        baseName "auth"
+        baseName "resume-service"
         excludeDevtools = true
     }
 }
