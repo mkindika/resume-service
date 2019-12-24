@@ -75,6 +75,8 @@ CREATE TABLE IF NOT EXISTS `resumelk`.`resume_master` (
 ENGINE = InnoDB;
 
 
+alter table `resumelk`.`user` add column `password` VARCHAR(255);
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

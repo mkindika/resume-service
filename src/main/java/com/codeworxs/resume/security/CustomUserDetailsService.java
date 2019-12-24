@@ -1,8 +1,9 @@
 package com.codeworxs.resume.security;
 
 import com.codeworxs.resume.exception.ResourceNotFoundException;
-import com.codeworxs.resume.model.User;
-import com.codeworxs.resume.repository.UserRepository;
+import com.codeworxs.resume.user.User;
+import com.codeworxs.resume.user.UserRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

@@ -2,12 +2,13 @@ package com.codeworxs.resume.security.oauth2;
 
 
 import com.codeworxs.resume.exception.OAuth2AuthenticationProcessingException;
-import com.codeworxs.resume.model.AuthProvider;
-import com.codeworxs.resume.model.User;
-import com.codeworxs.resume.repository.UserRepository;
 import com.codeworxs.resume.security.UserPrincipal;
 import com.codeworxs.resume.security.oauth2.user.OAuth2UserInfo;
 import com.codeworxs.resume.security.oauth2.user.OAuth2UserInfoFactory;
+import com.codeworxs.resume.user.AuthProvider;
+import com.codeworxs.resume.user.User;
+import com.codeworxs.resume.user.UserRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.core.AuthenticationException;

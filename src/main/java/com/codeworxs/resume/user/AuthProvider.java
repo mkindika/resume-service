@@ -1,4 +1,4 @@
-package com.codeworxs.resume.model;
+package com.codeworxs.resume.user;
 
 public enum  AuthProvider {
     local,

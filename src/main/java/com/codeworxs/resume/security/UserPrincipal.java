@@ -5,7 +5,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 
-import com.codeworxs.resume.model.User;
+import com.codeworxs.resume.user.User;
 
 import java.util.Collection;
 import java.util.Collections;

@@ -1,15 +1,15 @@
-package com.codeworxs.resume.controller;
+package com.codeworxs.resume.security;
 
 
 import com.codeworxs.resume.exception.BadRequestException;
-import com.codeworxs.resume.model.AuthProvider;
-import com.codeworxs.resume.model.User;
 import com.codeworxs.resume.payload.ApiResponse;
 import com.codeworxs.resume.payload.AuthResponse;
 import com.codeworxs.resume.payload.LoginRequest;
 import com.codeworxs.resume.payload.SignUpRequest;
-import com.codeworxs.resume.repository.UserRepository;
-import com.codeworxs.resume.security.TokenProvider;
+import com.codeworxs.resume.user.AuthProvider;
+import com.codeworxs.resume.user.User;
+import com.codeworxs.resume.user.UserRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -57,7 +57,7 @@ public class AuthController {
 
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpRequest signUpRequest) {
-        if(userRepository.existsByEmail(signUpRequest.getEmail())) {
+        if(Boolean.TRUE.equals(userRepository.existsByEmail(signUpRequest.getEmail()))) {
             throw new BadRequestException("Email address already in use.");
         }
 
@@ -76,7 +76,7 @@ public class AuthController {
                 .buildAndExpand(result.getId()).toUri();
 
         return ResponseEntity.created(location)
-                .body(new ApiResponse(true, "User registered successfully@"));
+                .body(new ApiResponse(true, "User registered successfully"));
     }
 
 }

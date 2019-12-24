@@ -4,7 +4,7 @@ package com.codeworxs.resume.security.oauth2.user;
 import java.util.Map;
 
 import com.codeworxs.resume.exception.OAuth2AuthenticationProcessingException;
-import com.codeworxs.resume.model.AuthProvider;
+import com.codeworxs.resume.user.AuthProvider;
 
 public class OAuth2UserInfoFactory {
 

@@ -11,4 +11,4 @@ pluginManagement {
 		}
 	}
 }
-rootProject.name = 'resumelk'
+rootProject.name = 'resume-service'

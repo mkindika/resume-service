@@ -1,43 +1,61 @@
 package com.codeworxs.resume.user;
 
-import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import lombok.Getter;
+import lombok.Setter;
+
 import java.sql.Timestamp;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Type;
 
-@NoArgsConstructor
-@Data
-public class User implements Serializable {
-	
-	private static final long serialVersionUID = 1L;
+@Entity
+@Table(name = "user", uniqueConstraints = {
+        @UniqueConstraint(columnNames = "email")
+})
+@Getter
+@Setter
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
+    private Long id;
 
-	@Id
-	@Column(name = "user_id")
-	@GeneratedValue
-	private Long userId;
-	
-	@Column(name = "first_name")
-	private String firstName;
-	
-	@Column(name = "last_name")
-	private String lastName;
-	
-	private String email;
-	private String password;
-	
-	@Column(name = "created_date_time")
+    @Column(nullable = false)
+    private String name;
+
+    @Email
+    @Column(nullable = false)
+    private String email;
+
+    @Column(name = "image_url")
+    private String imageUrl;
+
+    @Column(nullable = false,name = "is_verified", columnDefinition = "TINYINT(1)")
+    @Type(type = "org.hibernate.type.NumericBooleanType")
+    private Boolean emailVerified = false;
+    
+    @Column(name = "created_date_time")
 	private Timestamp createdDateTime;
 
-	@Column(name = "is_active")
-	private byte isActive;
+	@Column(name = "is_active", columnDefinition = "TINYINT(1)")
+	@Type(type = "org.hibernate.type.NumericBooleanType")
+	private Boolean isActive = false;
 
-	@Column(name = "is_verified")
-	private byte userType;
-	
+    @JsonIgnore
+    private String password;
+
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    private AuthProvider provider;
+
+    private String providerId;
+    
+    @Column(name = "user_type_id")
+    private Integer userTypeId;
+
 }

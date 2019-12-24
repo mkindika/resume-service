@@ -1,9 +1,7 @@
-package com.codeworxs.resume.repository;
+package com.codeworxs.resume.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
-import com.codeworxs.resume.model.User;
 
 import java.util.Optional;
 
