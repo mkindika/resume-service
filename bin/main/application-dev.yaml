@@ -2,7 +2,7 @@ server:
     port: 8091
 spring:
     datasource:
-        url: jdbc:mysql://resumedb:3306/resumelk?useSSL=false
+        url: jdbc:mysql://resumedb:3306/resumelk?useSSL=false&allowPublicKeyRetrieval=true
         username: devadmin
         password: "w0lfman"
     jpa:
