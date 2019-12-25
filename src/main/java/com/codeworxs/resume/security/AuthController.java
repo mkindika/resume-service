@@ -9,6 +9,7 @@ import com.codeworxs.resume.payload.SignUpRequest;
 import com.codeworxs.resume.user.AuthProvider;
 import com.codeworxs.resume.user.User;
 import com.codeworxs.resume.user.UserRepository;
+import com.codeworxs.resume.user.UserType;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -69,7 +70,7 @@ public class AuthController {
         user.setProvider(AuthProvider.local);
         user.setCreatedDateTime(LocalDateTime.now());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-
+        user.setUserTypeId(UserType.STANDARD.getId());
         User result = userRepository.save(user);
 
         URI location = ServletUriComponentsBuilder
