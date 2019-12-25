@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.context.request.WebRequest;
 
 import com.codeworxs.resume.payload.ErrorResponse;
 
@@ -18,8 +19,12 @@ public class RestExceptionHandler {
 	
 	@ExceptionHandler
 	@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
-    public ServiceException handleServiceException(ServiceException ex) {
-        return ex;
+    public ErrorResponse handleServiceException(ServiceException ex) {
+		return new ErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), ex.getMessage());
     }
 	
+	@ExceptionHandler({ Exception.class })
+	public ErrorResponse handleAll(Exception ex, WebRequest request) {
+	    return new ErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), ex.getMessage());
+	}
 }

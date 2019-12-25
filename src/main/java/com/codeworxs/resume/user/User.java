@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -40,7 +41,7 @@ public class User {
     private Boolean emailVerified = false;
     
     @Column(name = "created_date_time")
-	private Timestamp createdDateTime;
+	private LocalDateTime createdDateTime;
 
 	@Column(name = "is_active", columnDefinition = "TINYINT(1)")
 	@Type(type = "org.hibernate.type.NumericBooleanType")
